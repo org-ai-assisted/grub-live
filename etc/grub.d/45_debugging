@@ -13,8 +13,8 @@ set -o errexit
 set -o nounset
 
 output() {
-   ## Write to stdout to add this to grub.cfg.
-   printf '%s\n' "## $*"
+   ## Write to stdout to add this to grub.cfg. A value may contain newlines.
+   printf '%s\n' "$*" | sed 's/^/## /'
    ## Write to stderr so it is shown in console and not added to the grub config file.
    printf '%s\n' "$*" >&2
 }
